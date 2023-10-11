@@ -12,12 +12,7 @@ function App() {
   };
 
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const { username, firstname, lastname, email, password, sageSalesperson } =
-    formFields;
-
-  const resetFormFields = () => {
-    setFormFields(defaultFormFields);
-  };
+  const { username, password, sageSalesperson } = formFields;
 
   const handleChange = (event) => {
     const { name, value } = event.target;
