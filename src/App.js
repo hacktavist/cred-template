@@ -22,10 +22,8 @@ function App() {
     ssn,
     sageSalesperson,
   } = formFields;
-  // const emailSuffix = "@marmicfire.com";
-  var firstInitial = "";
-  var middleInitial = "";
-  var lastInitial = "";
+  const emailSuffix = "@marmicfire.com";
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -37,32 +35,38 @@ function App() {
   // take first letter of firstname, middleInitial, and lastname to create sage salesperson
   // take first 3 letters of last name and last 4 of ss# for ST PW
 
-  const getInitials = () => {
-    firstInitial = firstname.slice(0, 1);
-    middleInitial = middlename.slice(0, 1);
-    lastInitial = lastname.slice(0, 1);
-    var initials = [];
-    initials.push(firstInitial, middleInitial, lastInitial);
 
-    return initials;
-  };
+  const createMarmicEmail = () => {
+    var firstInitial = firstname.slice(0, 1);
+
+    var marmicEmail = firstInitial+lastname+emailSuffix;
+    marmicEmail = marmicEmail.toLowerCase();
+    return marmicEmail;
+   
+  }
 
   const createSTPassword = () => {
-    //var serviceTradeInitials = lastname.slice(0,3).toUpperCase();
+    var serviceTradeInitials = lastname.slice(0,3).toUpperCase();
+    var serviceTradePassword = serviceTradeInitials+"#"+ssn;
+    return serviceTradePassword;
   };
 
   const createSageInitials = () => {
-    var initials = getInitials();
-    console.log(initials);
-    var sageInitials = "";
-    // var pw = getInitials();
-    // console.log("this is pw: " + pw);
-    // setFormFields({ ...formFields, password: pw });
+    var firstInitial = firstname.slice(0, 1).toUpperCase();
+    var middleInitial = middlename.slice(0, 1).toUpperCase();
+    var lastInitial = lastname.slice(0, 1).toUpperCase();
+    var sageInitials = firstInitial + middleInitial + lastInitial;
+    sageInitials = sageInitials.toUpperCase();
+    return sageInitials;
   };
 
   const createTemplateInformation = (e) => {
     e.preventDefault();
-    createSageInitials();
+    var sage = createSageInitials();
+    var stPW = createSTPassword();
+    var mEmail = createMarmicEmail();
+
+    setFormFields({...defaultFormFields, username:mEmail, email: mEmail, password: stPW, sageSalesperson: sage});
   };
 
   return (
@@ -81,12 +85,12 @@ function App() {
         <input name="ssn" onChange={handleChange} type="text" />
         <br />
         <label>Marmic Email </label>
-        <input name="username" onChange={handleChange} type="text" />
+        <input value={username} name="username" onChange={handleChange} type="text" />
         <br />
 
         <br />
         <label>Sage salesperson No. </label>
-        <input name="sageSalesperson" onChange={handleChange} type="text" />
+        <input value={sageSalesperson} name="sageSalesperson" onChange={handleChange} type="text" />
         <button type="submit">submit</button>
       </form>
       <hr />
