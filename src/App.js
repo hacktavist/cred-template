@@ -19,6 +19,7 @@ function App() {
     middlename,
     lastname,
     password,
+    ssn,
     sageSalesperson,
   } = formFields;
   // const emailSuffix = "@marmicfire.com";
@@ -40,29 +41,45 @@ function App() {
     firstInitial = firstname.slice(0, 1);
     middleInitial = middlename.slice(0, 1);
     lastInitial = lastname.slice(0, 1);
-    var initials = firstInitial + middleInitial + lastInitial;
+    var initials = [];
+    initials.push(firstInitial, middleInitial, lastInitial);
 
     return initials;
   };
 
-  const createPassword = (e) => {
+  const createSTPassword = () => {
+    //var serviceTradeInitials = lastname.slice(0,3).toUpperCase();
+  };
+
+  const createSageInitials = () => {
+    var initials = getInitials();
+    console.log(initials);
+    var sageInitials = "";
+    // var pw = getInitials();
+    // console.log("this is pw: " + pw);
+    // setFormFields({ ...formFields, password: pw });
+  };
+
+  const createTemplateInformation = (e) => {
     e.preventDefault();
-    var pw = getInitials();
-    console.log("this is pw: " + pw);
-    setFormFields({ ...formFields, [password]: pw }); // this is not setting password
+    createSageInitials();
   };
 
   return (
     <div className="App">
-      <form onSubmit={createPassword}>
+      <form onSubmit={createTemplateInformation}>
         <label>Firstname: </label>
         <input name="firstname" onChange={handleChange} type="text" />
+        <br />
         <label>Middle: </label>
         <input name="middlename" onChange={handleChange} type="text" />
+        <br />
         <label>Last Name: </label>
         <input name="lastname" onChange={handleChange} type="text" />
         <br />
-
+        <label>SSN: </label>
+        <input name="ssn" onChange={handleChange} type="text" />
+        <br />
         <label>Marmic Email </label>
         <input name="username" onChange={handleChange} type="text" />
         <br />
