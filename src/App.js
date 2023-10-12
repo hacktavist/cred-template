@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import "./App.css";
+//import "./App.css";
 
 function App() {
   const defaultFormFields = {
     username: "",
     firstname: "",
+    middlename: "",
     lastname: "",
     email: "",
     password: "",
@@ -12,24 +13,64 @@ function App() {
   };
 
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const { username, password, sageSalesperson } = formFields;
+  const {
+    username,
+    firstname,
+    middlename,
+    lastname,
+    password,
+    sageSalesperson,
+  } = formFields;
+  // const emailSuffix = "@marmicfire.com";
+  var firstInitial = "";
+  var middleInitial = "";
+  var lastInitial = "";
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
 
+  // functionality: create email address, create salesperson number, create password
+  // take first letter of firstname and full last name for email address
+  // take first letter of firstname, middleInitial, and lastname to create sage salesperson
+  // take first 3 letters of last name and last 4 of ss# for ST PW
+
+  const getInitials = () => {
+    firstInitial = firstname.slice(0, 1);
+    middleInitial = middlename.slice(0, 1);
+    lastInitial = lastname.slice(0, 1);
+    var initials = firstInitial + middleInitial + lastInitial;
+
+    return initials;
+  };
+
+  const createPassword = (e) => {
+    e.preventDefault();
+    var pw = getInitials();
+    console.log("this is pw: " + pw);
+    setFormFields({ ...formFields, [password]: pw }); // this is not setting password
+  };
+
   return (
     <div className="App">
-      <form>
+      <form onSubmit={createPassword}>
+        <label>Firstname: </label>
+        <input name="firstname" onChange={handleChange} type="text" />
+        <label>Middle: </label>
+        <input name="middlename" onChange={handleChange} type="text" />
+        <label>Last Name: </label>
+        <input name="lastname" onChange={handleChange} type="text" />
+        <br />
+
         <label>Marmic Email </label>
         <input name="username" onChange={handleChange} type="text" />
         <br />
-        <label>password </label>
-        <input name="password" onChange={handleChange} type="text" />
+
         <br />
         <label>Sage salesperson No. </label>
         <input name="sageSalesperson" onChange={handleChange} type="text" />
+        <button type="submit">submit</button>
       </form>
       <hr />
       <p>
