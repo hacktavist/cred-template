@@ -24,9 +24,9 @@ function App() {
   } = formFields;
   const emailSuffix = "@marmicfire.com";
 
-
   const handleChange = (event) => {
     const { name, value } = event.target;
+    
     setFormFields({ ...formFields, [name]: value });
   };
 
@@ -35,19 +35,18 @@ function App() {
   // take first letter of firstname, middleInitial, and lastname to create sage salesperson
   // take first 3 letters of last name and last 4 of ss# for ST PW
 
-
   const createMarmicEmail = () => {
     var firstInitial = firstname.slice(0, 1);
 
-    var marmicEmail = firstInitial+lastname+emailSuffix;
+    var marmicEmail = firstInitial + lastname + emailSuffix;
     marmicEmail = marmicEmail.toLowerCase();
     return marmicEmail;
-   
-  }
+  };
 
   const createSTPassword = () => {
-    var serviceTradeInitials = lastname.slice(0,3).toUpperCase();
-    var serviceTradePassword = serviceTradeInitials+"#"+ssn;
+    var serviceTradeInitials = lastname.slice(0, 3).toUpperCase();
+    var serviceTradePassword = serviceTradeInitials + "#" + ssn;
+    console.log("ST PW: " + serviceTradePassword);
     return serviceTradePassword;
   };
 
@@ -66,7 +65,13 @@ function App() {
     var stPW = createSTPassword();
     var mEmail = createMarmicEmail();
 
-    setFormFields({...defaultFormFields, username:mEmail, email: mEmail, password: stPW, sageSalesperson: sage});
+    setFormFields({
+      ...formFields,
+      username: mEmail,
+      email: mEmail,
+      password: stPW,
+      sageSalesperson: sage,
+    });
   };
 
   return (
@@ -85,12 +90,22 @@ function App() {
         <input name="ssn" onChange={handleChange} type="text" />
         <br />
         <label>Marmic Email </label>
-        <input value={username} name="username" onChange={handleChange} type="text" />
+        <input
+          value={username}
+          name="username"
+          onChange={handleChange}
+          type="text"
+        />
         <br />
 
         <br />
         <label>Sage salesperson No. </label>
-        <input value={sageSalesperson} name="sageSalesperson" onChange={handleChange} type="text" />
+        <input
+          value={sageSalesperson}
+          name="sageSalesperson"
+          onChange={handleChange}
+          type="text"
+        />
         <button type="submit">submit</button>
       </form>
       <hr />
