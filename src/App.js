@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-//import "./App.css";
+import "./App.css";
 
 function App() {
   const defaultFormFields = {
@@ -75,8 +75,8 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <form onSubmit={createTemplateInformation}>
+    <div >
+      <form className="container-col" onSubmit={createTemplateInformation}>
         <label>Firstname: </label>
         <input name="firstname" onChange={handleChange} type="text" />
         <br />
@@ -109,7 +109,8 @@ function App() {
         <button type="submit">submit</button>
       </form>
       <hr />
-      <p>
+      <div className="container-row">
+        <p>
         Your new user has been created in ServiceTrade with the following
         credentials:
         <br />
@@ -120,7 +121,9 @@ function App() {
         In Sage, their tech salesperson initials for reporting are:{" "}
         {sageSalesperson}. <br />
         Please let us know if we can be of further assistance.
-      </p>
+        </p>
+        <p>here are more words!</p>
+      </div>
     </div>
   );
 }

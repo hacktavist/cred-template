@@ -1,3 +1,48 @@
 p {
-  font-size: .5em;
+  font-size: small;
+}
+
+label {
+  font-size: small;
+}
+
+input {
+  margin:0;
+}
+
+
+.container-col {
+  display: flex;
+  /* Then we define the flow direction 
+     and if we allow the items to wrap 
+   * Remember this is the same as:
+   * flex-direction: column;
+   * flex-wrap: wrap;
+   */
+   flex-flow: column wrap;
+  
+   /* Then we define how is distributed the remaining space */
+   justify-content: space-around;
+   
+   padding: 10px;
+   margin: 0;
+   align-items: center;
+}
+
+.container-row {
+  display: flex;
+  /* Then we define the flow direction 
+     and if we allow the items to wrap 
+   * Remember this is the same as:
+   * flex-direction: row;
+   * flex-wrap: wrap;
+   */
+   flex-flow: row wrap;
+  
+   /* Then we define how is distributed the remaining space */
+   justify-content: space-between;
+   
+   padding: 10px;
+   margin: 0;
+   align-items: center;
 }
