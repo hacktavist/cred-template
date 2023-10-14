@@ -26,7 +26,7 @@ function App() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    
+
     setFormFields({ ...formFields, [name]: value });
   };
 
@@ -75,7 +75,7 @@ function App() {
   };
 
   return (
-    <div >
+    <div>
       <form className="container-col" onSubmit={createTemplateInformation}>
         <label>Firstname: </label>
         <input name="firstname" onChange={handleChange} type="text" />
@@ -109,20 +109,62 @@ function App() {
         <button type="submit">submit</button>
       </form>
       <hr />
+
       <div className="container-row">
         <p>
-        Your new user has been created in ServiceTrade with the following
-        credentials:
-        <br />
-        Username: {username} <br />
-        Password: {password} <br />
-        This temporary password can be changed at any point by clicking this{" "}
-        <a href="https://app.servicetrade.com/auth/recover">link</a>. <br />
-        In Sage, their tech salesperson initials for reporting are:{" "}
-        {sageSalesperson}. <br />
-        Please let us know if we can be of further assistance.
+          <span className="header">ServiceTrade Email Template</span>
+          Your new user has been created in ServiceTrade with the following
+          credentials:
+          <br />
+          <br />
+          Username: {username} <br />
+          Password: {password} <br />
+          <br />
+          This temporary password can be changed at any point by clicking this{" "}
+          <a href="https://app.servicetrade.com/auth/recover">link</a>. <br />
+          <br />
+          In Sage, their tech salesperson initials for reporting are:{" "}
+          {sageSalesperson}. <br />
+          <br />
+          Please let us know if we can be of further assistance.
         </p>
-        <p>here are more words!</p>
+        <p>
+          <span className="header">Other Template Header</span>
+          Your new user has been created in ServiceTrade with the following
+          credentials:
+          <br />
+          <br />
+          Username: <br />
+          Password: <br />
+          <br />
+          This temporary password can be changed at any point by clicking this{" "}
+          <a href="https://app.servicetrade.com/auth/recover">link</a>. <br />
+          <br />
+          DON'T FORGET: Office Staff must also use the ServiceTrade Extender on
+          their web browser. If they sync their work account with Chrome
+          (preferred) this will automatically install for them. Otherwise, they
+          can use this{" "}
+          <a href="https://docs.google.com/document/d/1rBrPMu2zFwBWP39uGfKzYVc8IAzKc6QXgCjiC_C8R1M/edit">
+            document
+          </a>{" "}
+          to learn more.
+          <br />
+          <br />
+          They have been added as a Sage user with the following credentials:{" "}
+          <br />
+          <br />
+          Username: <br />
+          Password: <br />
+          <br />
+          DON’T FORGET: To access Sage, they will need to set up Citrix with
+          these{" "}
+          <a href="https://docs.google.com/document/d/1s-MzGooanv1EnPfjHPj9Lf1n8Z6X7sZIdFs2w093uJc/edit#heading=h.kmo1oejv1w8q">
+            instructions
+          </a>
+          . The password for Citrix itself will match their Google account, but
+          their Sage credentials are shown above. Please let us know if we can
+          be of further assistance.
+        </p>
       </div>
     </div>
   );

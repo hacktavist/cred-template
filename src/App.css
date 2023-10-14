@@ -1,5 +1,7 @@
 p {
+  width: 50%;
   font-size: small;
+  line-height: 1rem;
 }
 
 label {
@@ -7,10 +9,20 @@ label {
 }
 
 input {
-  margin:0;
+  margin: 0;
 }
 
+.header {
+  display: block;
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
 
+  text-align: center;
+}
 .container-col {
   display: flex;
   /* Then we define the flow direction 
@@ -19,14 +31,14 @@ input {
    * flex-direction: column;
    * flex-wrap: wrap;
    */
-   flex-flow: column wrap;
-  
-   /* Then we define how is distributed the remaining space */
-   justify-content: space-around;
-   
-   padding: 10px;
-   margin: 0;
-   align-items: center;
+  flex-flow: column wrap;
+
+  /* Then we define how is distributed the remaining space */
+  justify-content: space-around;
+
+  padding: 10px;
+  margin: 0;
+  align-items: center;
 }
 
 .container-row {
@@ -37,12 +49,12 @@ input {
    * flex-direction: row;
    * flex-wrap: wrap;
    */
-   flex-flow: row wrap;
-  
-   /* Then we define how is distributed the remaining space */
-   justify-content: space-between;
-   
-   padding: 10px;
-   margin: 0;
-   align-items: center;
+  flex-flow: row wrap;
+
+  /* Then we define how is distributed the remaining space */
+  justify-content: space-between;
+
+  padding: 10px;
+  margin: 0;
+  align-items: center;
 }
