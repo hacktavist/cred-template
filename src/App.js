@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FormInput from "./components/form-input.component";
 import "./App.css";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     lastname: "",
     email: "",
     password: "",
+    ssn: "",
     sageSalesperson: "",
   };
 
@@ -18,6 +20,7 @@ function App() {
     firstname,
     middlename,
     lastname,
+    email,
     password,
     ssn,
     sageSalesperson,
@@ -76,36 +79,56 @@ function App() {
 
   return (
     <div>
-      <form className="container-col" onSubmit={createTemplateInformation}>
-        <label>Firstname: </label>
-        <input name="firstname" onChange={handleChange} type="text" />
-        <br />
-        <label>Middle: </label>
-        <input name="middlename" onChange={handleChange} type="text" />
-        <br />
-        <label>Last Name: </label>
-        <input name="lastname" onChange={handleChange} type="text" />
-        <br />
-        <label>SSN: </label>
-        <input name="ssn" onChange={handleChange} type="text" />
-        <br />
-        <label>Marmic Email </label>
-        <input
-          value={username}
-          name="username"
-          onChange={handleChange}
-          type="text"
-        />
-        <br />
+        <form className="container-col" onSubmit={createTemplateInformation}>
+          <FormInput
+            label="First Name" inputOptions={{
+              required: true,
+              type: "text",
+              name: "firstname",
+              value: firstname,
+              onChange: handleChange,
+            }} />
+          <FormInput
+            label="Middle Name" inputOptions={{
+              required: true,
+              type: "text",
+              name: "middlename",
+              value: middlename,
+              onChange: handleChange,
+            }} />
+          <FormInput
+            label="Last Name" inputOptions={{
+              required: true,
+              type: "text",
+              name: "lastname",
+              value: lastname,
+              onChange: handleChange,
+            }} />
+          <FormInput
+            label="Last 4 of SSN" inputOptions={{
+              required: true,
+              maxLength: 4,
+              type: "password",
+              name: "ssn",
+              value: ssn,
+              onChange: handleChange,
+            }} />
+          <FormInput
+            label="Marmic Email" inputOptions={{
+              type: "email",
+              name: "email",
+              value: email,
+              onChange: handleChange,
+            }} />
+          <FormInput
+            label="Sage Salesperson No." inputOptions={{
+              type: "text",
+              name: "sageSalesperson",
+              value: sageSalesperson,
+              onChange: handleChange,
+            }} />
+        
 
-        <br />
-        <label>Sage salesperson No. </label>
-        <input
-          value={sageSalesperson}
-          name="sageSalesperson"
-          onChange={handleChange}
-          type="text"
-        />
         <button type="submit">submit</button>
       </form>
       <hr />
