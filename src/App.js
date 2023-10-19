@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import FormInput from "./components/form-input.component";
+import FormInput from "./components/form-input/form-input.component";
 import "./App.css";
+import CustomForm from "./components/custom-form/custom-form.component";
 
 function App() {
   const defaultFormFields = {
@@ -25,6 +26,13 @@ function App() {
     ssn,
     sageSalesperson,
   } = formFields;
+
+  const sageFields = [
+    { label: "Some Different Field", type: "text", name:"differentField"},
+    { label: "Some Different Field2", type: "text", name:"differentField2"},
+    { label: "Some Different Field3", type: "text", name:"differentField3"},
+  ]
+
   const emailSuffix = "@marmicfire.com";
 
   const handleChange = (event) => {
@@ -79,8 +87,9 @@ function App() {
 
   return (
     <div>
+      <CustomForm sharedFields={sageFields} distinctFields={sageFields} />
         <form className="container-col" onSubmit={createTemplateInformation}>
-          <FormInput
+          {/* <FormInput
             label="First Name" inputOptions={{
               required: true,
               type: "text",
@@ -126,7 +135,7 @@ function App() {
               name: "sageSalesperson",
               value: sageSalesperson,
               onChange: handleChange,
-            }} />
+            }} /> */}
         
 
         <button type="submit">submit</button>
