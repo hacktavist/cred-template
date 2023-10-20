@@ -4,16 +4,20 @@ import "./App.css";
 import CustomForm from "./components/custom-form/custom-form.component";
 
 function App() {
-  const defaultFormFields = {
-    username: "",
-    firstname: "",
-    middlename: "",
-    lastname: "",
-    email: "",
-    password: "",
-    ssn: "",
-    sageSalesperson: "",
-  };
+  const defaultFormFields = [
+    {
+      label: "Username: ",
+      type: "text",
+      name: "username",
+    },
+    { label: "First Name: ", type: "text", name: "firstname" },
+    { label: "Middle Initial: ", type: "text", name: "middlename" },
+    { label: "Last Name: ", typee: "text", name: "lastname" },
+    { label: "Email Address: ", type: "email", name: "email" },
+    { label: "Password: ", type: "password", name: "password" },
+    { label: "Last 4 digits of SSN: ", type: "text", name: "ssn" },
+    { label: "Sage Salesperson ID: ", type: "text", name: "sageSalesperson" },
+  ];
 
   const [formFields, setFormFields] = useState(defaultFormFields);
   const {
@@ -28,10 +32,10 @@ function App() {
   } = formFields;
 
   const sageFields = [
-    { label: "Some Different Field", type: "text", name:"differentField"},
-    { label: "Some Different Field2", type: "text", name:"differentField2"},
-    { label: "Some Different Field3", type: "text", name:"differentField3"},
-  ]
+    { label: "Some Different Field", type: "text", name: "differentField" },
+    { label: "Some Different Field2", type: "text", name: "differentField2" },
+    { label: "Some Different Field3", type: "text", name: "differentField3" },
+  ];
 
   const emailSuffix = "@marmicfire.com";
 
@@ -87,9 +91,9 @@ function App() {
 
   return (
     <div>
-      <CustomForm sharedFields={sageFields} distinctFields={sageFields} />
-        <form className="container-col" onSubmit={createTemplateInformation}>
-          {/* <FormInput
+      <CustomForm sharedFields={formFields} distinctFields={sageFields} />
+      <form className="container-col" onSubmit={createTemplateInformation}>
+        {/* <FormInput
             label="First Name" inputOptions={{
               required: true,
               type: "text",
@@ -136,12 +140,10 @@ function App() {
               value: sageSalesperson,
               onChange: handleChange,
             }} /> */}
-        
 
         <button type="submit">submit</button>
       </form>
       <hr />
-
       <div className="container-row">
         <p>
           <span className="header">ServiceTrade Email Template</span>
